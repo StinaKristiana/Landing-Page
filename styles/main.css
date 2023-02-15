@@ -1,6 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200&family=Playfair+Display&family=Raleway:wght@200&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
+}
+
+body {
+    background: #101820FF;
+    margin: 0;
+    font-family: 'Merriweather', serif;
+}
+
+#list {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #101820FF;
+    border: 1px solid #FEE715FF;
+}
+
+#list li {
+    border-radius: 3px;
+    flex-grow: 1;
+    justify-content: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.listStyle li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #FEE715FF;
+}
+
+.listStyle li a:hover {
+    color: #6b7b8c;
+}
+
+.highlighted {
+    color: red !important;
+}
+
+.visited {
+    color: red !important;
+}
+
+#content {
+    margin-top: 50px;
+}
+
+#content div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
 }
