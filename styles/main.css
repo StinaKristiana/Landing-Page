@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200&family=Playfair+Display&family=Raleway:wght@200&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', sans-serif;
+    background: #101820FF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h3 {
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #cacdd2;
+    padding: 12px;
+}
+
+p {
+    text-align: center;
+    padding-bottom: 12px;
+}
+
+section {
+    margin-top: 50px;
+}
+
+
+section h2 {
+    margin-top: 50px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    overflow: auto;
+    border: 1px solid #FEE715FF
+}
+
+footer {
+    margin-top: 4px;
+    border: 1px solid #FEE715FF;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #101820FF;
+    height: auto;
+    color: #fff;
+}
+
+.highlighted {
+    color: green !important;
+    border: 1px solid green;
+    border-radius: 4px;
+}
+
+#list {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #101820FF;
+    border: 1px solid #FEE715FF;
+}
+
+#list li {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    border-radius: 3px;
+    height: 50px;
+    align-items: center;
+}
+
+.listStyle a {
+    text-decoration: none;
+    transition: all 50ms ease-in-out;
+    color: #FEE715FF;
+    padding: 8px;
+    display: inline-block;
+}
+
+li a:hover {
+    color: #6b7b8c;
+}
+
+.listStyle li.active>a {
+    color: green !important;
+    border: 1px solid #FEE715FF;
+    border-radius: 10%;
+}
+
+.sectionStyling {
+    color: #FEE715FF;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.to-top {
+    position: relative;
+}
+
+.btn-position {
+    position: fixed;
+    bottom: 45px;
+    right: 30px;
+    z-index: 2;
+}
+
+.btn-style {
+    transition: all 0.2s ease-in-out;
+    background-color: #101820FF;
+    border: 2px solid #FEE715FF;
+    border-radius: 50%;
+    justify-content: center;
+    height: 40px;
+    animation: movement 10s ease-in-out infinite;
+    width: 40px;
+    color: #FEE715FF;
+    cursor: pointer;
+    visibility: hidden;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes movement {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(10px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    75% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
