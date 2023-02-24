@@ -137,6 +137,10 @@ li a:hover {
     align-items: center;
 }
 
+.sectionhighlight {
+    color: green !important;
+}
+
 @keyframes movement {
     0% {
         transform: translateY(0px);

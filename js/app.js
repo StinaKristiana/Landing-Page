@@ -1,7 +1,8 @@
 // build up for landing page
 const ul = document.getElementById('list')
 const buttonScroll = document.querySelector('.btn')
-const navigation = document.querySelectorAll('header nav a')
+const navigation = document.querySelectorAll('header ul a')
+const sections = document.querySelectorAll('section h2')
 const footer = document.getElementById('footer')
 const h3 = document.createElement('h3')
 const paragraph = document.body.appendChild(document.createElement('p'))
@@ -43,18 +44,18 @@ function smoothScroll (event) {
   })
 }
 
-navigation.forEach(nav => {
-  nav.addEventListener('click', smoothScroll)
+navigation.forEach(ul => {
+  ul.addEventListener('click', smoothScroll)
 })
 //looping through navigation and adding 'highlighted' class so its possible to see with section we are viewing
-navigation.forEach(function (nav) {
-  nav.addEventListener('click', () => {
-    navigation.forEach(nav => {
-      if (nav.classList.contains('highlighted')) {
-        nav.classList.remove('highlighted')
+navigation.forEach(function (ul) {
+  ul.addEventListener('click', () => {
+    navigation.forEach(ul => {
+      if (ul.classList.contains('highlighted')) {
+        ul.classList.remove('highlighted')
       }
     })
-    nav.classList.add('highlighted')
+    ul.classList.add('highlighted')
   })
 })
 //All magic happens here: im using all mighty intersection observer API to target element
@@ -64,22 +65,22 @@ window.addEventListener('DOMContentLoaded', event => {
     listing.forEach(listSections => {
       //lets target id from listing and with this we can add active class to it, so we can see with section is viewed from navigation with scroll, I also remove 'highlighted' class if its clicked while scrooling
       const id = listSections.target.getAttribute('id')
-      navigation.forEach(nav => {
+      navigation.forEach(ul => {
         if (
           listSections.isIntersecting === true &&
-          nav.classList.contains('highlighted')
+          ul.classList.contains('highlighted')
         ) {
-          nav.classList.remove('highlighted')
+          ul.classList.remove('highlighted')
         }
       })
       //if listSections.intersectionRatio is bigger than 0 we are adding active class to parentElement, this makes us to see with section is scroled from navigation, and if not then we are removing this class
       if (listSections.intersectionRatio > 0) {
         document
-          .querySelector(`nav li a[href="#${id}"]`)
+          .querySelector(`ul li a[href="#${id}"]`)
           .parentElement.classList.add('active')
       } else {
         document
-          .querySelector(`nav li a[href="#${id}"]`)
+          .querySelector(`ul li a[href="#${id}"]`)
           .parentElement.classList.remove('active')
       }
     })
@@ -88,3 +89,23 @@ window.addEventListener('DOMContentLoaded', event => {
     observer.observe(section)
   })
 })
+
+//looping through section and while using getBoundingClientRect() targeted section beeing highlighted, if its not correct possiton of section it will take of sectionhighlight class
+function sectionPosition () {
+  sections.forEach(function (sec) {
+    const rect = sec.getBoundingClientRect()
+    sections.forEach(sec => {
+      if (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom >= 0 &&
+        sec.classList.contains('sectionhighlight')
+      ) {
+        if (rect.top < window.innerHeight && rect.bottom >= 0)
+          sec.classList.remove('sectionhighlight')
+      }
+    })
+    sec.classList.add('sectionhighlight')
+  })
+}
+document.addEventListener('scroll', sectionPosition)
